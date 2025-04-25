@@ -3,8 +3,15 @@ import App from "./App";
 import "./index.css";
 import { LanguageProvider } from "./contexts/LanguageContext";
 
-createRoot(document.getElementById("root")!).render(
-  <LanguageProvider>
-    <App />
-  </LanguageProvider>
-);
+// Überprüfe, ob das Root-Element existiert, bevor du es verwendest
+const rootElement = document.getElementById("root");
+
+if (rootElement) {
+  createRoot(rootElement).render(
+    <LanguageProvider>
+      <App />
+    </LanguageProvider>
+  );
+} else {
+  console.error("Root element not found in the HTML");
+}

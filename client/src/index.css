@@ -76,6 +76,7 @@
     max-width: 100%;
     height: auto;
     border-radius: 0.375rem;
+    object-fit: cover; /* Neue Verbesserung für Bildanpassung */
   }
 
   /* Utility Classes */
@@ -175,4 +176,8 @@
   ::-webkit-scrollbar-thumb:hover {
     background: var(--accent);
   }
+
+  /* Firefox scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-light) var(--background);
 }
