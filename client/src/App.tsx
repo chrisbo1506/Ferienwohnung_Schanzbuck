@@ -1,4 +1,4 @@
-import { Routes, Route } from "wouter"; // Routes statt Switch
+import { Router, Route } from "wouter"; // Router anstelle von Routes
 import { Toaster } from "@/components/ui/toaster";
 import NotFound from "@/pages/not-found";
 import Home from "@/pages/Home";
@@ -14,22 +14,28 @@ import TermsPage from "./pages/TermsPage";
 import PrivacyPolicyPage from "./pages/PrivacyPolicyPage";
 import ImprintPage from "./pages/ImprintPage";
 
+function RouterComponent() {
+  return (
+    <Router>
+      <Route path="/" component={Home} />
+      <Route path="/wohnung1" component={ApartmentOnePage} />
+      <Route path="/wohnung2" component={ApartmentTwoPage} />
+      <Route path="/kontakt" component={ContactPage} />
+      <Route path="/agb" component={TermsPage} />
+      <Route path="/datenschutz" component={PrivacyPolicyPage} />
+      <Route path="/impressum" component={ImprintPage} />
+      <Route component={NotFound} />
+    </Router>
+  );
+}
+
 function App() {
   return (
     <LanguageProvider>
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/wohnung1" element={<ApartmentOnePage />} />
-            <Route path="/wohnung2" element={<ApartmentTwoPage />} />
-            <Route path="/kontakt" element={<ContactPage />} />
-            <Route path="/agb" element={<TermsPage />} />
-            <Route path="/datenschutz" element={<PrivacyPolicyPage />} />
-            <Route path="/impressum" element={<ImprintPage />} />
-            <Route element={<NotFound />} />
-          </Routes>
+          <RouterComponent />
         </main>
         <Footer />
         <Toaster />

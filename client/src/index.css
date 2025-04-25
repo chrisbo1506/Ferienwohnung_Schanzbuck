@@ -159,7 +159,7 @@
     @apply py-16 px-4 mx-auto max-w-7xl;
   }
 
-  /* Custom scrollbar */
+  /* Webkit Scrollbar (Chrome, Safari) */
   ::-webkit-scrollbar {
     width: 10px;
   }
@@ -177,7 +177,9 @@
     background: var(--accent);
   }
 
-  /* Firefox scrollbar */
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent-light) var(--background);
+  /* Firefox Scrollbar */
+  @supports (-moz-appearance: none) {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-light) var(--background);
+  }
 }
