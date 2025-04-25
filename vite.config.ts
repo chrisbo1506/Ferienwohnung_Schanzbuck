@@ -20,14 +20,17 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": path.resolve(new URL(import.meta.url).pathname, "client", "src"),
-      "@shared": path.resolve(new URL(import.meta.url).pathname, "shared"),
-      "@assets": path.resolve(new URL(import.meta.url).pathname, "attached_assets"),
+      "@": path.resolve(import.meta.dirname, "client", "src"),
+      "@shared": path.resolve(import.meta.dirname, "shared"),
+      "@assets": path.resolve(import.meta.dirname, "attached_assets"),
     },
   },
-  root: path.resolve(new URL(import.meta.url).pathname, "client"),
+  root: path.resolve(import.meta.dirname, "client"), // root bleibt unverändert
   build: {
-    outDir: path.resolve(new URL(import.meta.url).pathname, "dist/public"),
+    outDir: path.resolve(import.meta.dirname, "dist/public"),
     emptyOutDir: true,
+    rollupOptions: {
+      input: path.resolve(import.meta.dirname, "client", "index.html"), // Pfad zu index.html
+    },
   },
 });
