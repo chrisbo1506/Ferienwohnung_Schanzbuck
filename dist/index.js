@@ -39,19 +39,19 @@ var vite_config_default = defineConfig({
   // Entferne null-Werte aus der Plugin-Liste
   resolve: {
     alias: {
-      "@": path.resolve(import.meta.dirname, "client", "src"),
-      "@shared": path.resolve(import.meta.dirname, "shared"),
-      "@assets": path.resolve(import.meta.dirname, "attached_assets")
+      "@": path.resolve(__dirname, "client", "src"),
+      "@shared": path.resolve(__dirname, "shared"),
+      "@assets": path.resolve(__dirname, "attached_assets")
     }
   },
-  root: path.resolve(import.meta.dirname, "client"),
+  root: path.resolve(__dirname, "client"),
   // root bleibt unverändert
   build: {
-    outDir: path.resolve(import.meta.dirname, "dist/public"),
+    outDir: path.resolve(__dirname, "dist/public"),
     // Der Output-Ordner
     emptyOutDir: true,
     rollupOptions: {
-      input: path.resolve(import.meta.dirname, "client", "index.html")
+      input: path.resolve(__dirname, "client", "index.html")
       // Pfad zu index.html
     }
   }
